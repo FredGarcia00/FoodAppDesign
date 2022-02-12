@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .app {
+        padding: 1.5em;
+        background:#fff;
+        border-radius: 30px;
+        position: relative;
+        max-width:390px;
+        overflow: hidden;
+        height: 844px;
+    }
+    header {
+        display:flex;
+        justify-content: space-between;
+    }
+    .header__left-group {
+        display: flex;
+    }
+
+    .header__left-circle {
+        background: #f3f3f3;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header__left-user {
+        margin-right: 1rem;
+    }
+
+    .header__left-circle .fa-user {
+        font-size:2em;
+    }
+    .header__left-greeting{
+        display: block;
+        font-size:.8em;
+        color:#727272;
+        margin-bottom:.5rem;
+    }
+    .header__left-name {
+        color:#1b1b1b;
+        font-weight: 700;
+        font-size:1.1em;
+    }
+    .header__right-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header__right-group .fa-bars {
+        font-size:1.5em;
+    }
+
+    .search-area {
+        margin-bottom:1.5rem;
+    }
+
+    .search-area h1 {
+        margin:.5em 0;
+        font-size:3em;
+    }
+
+    .search-area__input-group {
+        position:relative;
+    }
+    .fa-magnifying-glass {
+        position:absolute;
+        font-size:1.7rem;
+        top: 15px;
+        left:15px;
+
+    }
+    .search-area__input {
+        height: 54px;
+        width: 100%;
+        border: 2px solid #1b1b1b;
+        border-radius:30px;
+        padding-left: 50px;
+        font-size:1.2rem;
+    }
+
+    .restaurants h3 {
+        font-size:1.1rem;
+        font-weight: 700;
+        margin-bottom: 1.4rem;
+    }
+    .res-group {
+        display:flex;
+        overflow: hidden;
+        margin-bottom:2rem;
+    }
+
+    .res-group__item {
+        background:#fbfbfb;
+        border:2pxsolid #efefef;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 30px;
+        padding: 10px;
+        max-width: 135px;
+        margin-right:1rem;
+        transition: all .4s ease-in-out;
+        cursor: pointer;
+    }
+
+    .res-group__item:hover,
+    .res-group__item--active {
+        background:#ffd914;
+        border: 2px solid #000;
+    }
+    .res-group__item-circle {
+        width:35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 10px;
+    }
+    .res-group__item-logo {
+        width:100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .res-group__item-title {
+        width: 65px;
+        overflow: hidden;
+    }
+    /* popular section */
+  
+    .popular h3 {
+        font-size:1.1rem;
+        font-weight: 700;
+        margin-bottom: 1.4rem;
+        margin-bottom: 5.4rem;
+    }
+    .popular-group {
+        display:flex;
+        flex-wrap: nowrap;
+        
+    }
+    .popular-group__item {
+        margin-right: 2rem;
+        border-radius: 23px;
+        background:#fff;
+        border:2px solid #000;
+        width:178px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        flex-shrink: 0;
+        transition: all .4s ease-in-out;
+        cursor: pointer;
+    }
+
+    .popular-group__item:hover {
+        background:#ffd914;
+    }
+
+    .popular-group__item-img {
+        width:80%;
+
+    }
+    .popular-group__item-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom:.3rem;
+    }
+    .popular-group__item-subtitle {
+        margin-bottom:.5rem;
+        font-size:.9rem;
+        color:#79809d;
+    }
+    .popular-group__item-price {
+        font-size:1.3rem;
+        font-weight: 700;
+        margin-bottom:.5rem;
+        color:#000;
+    }
+
+    .menu {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+     position: absolute;
+     bottom: 0px;
+     left: 0;
+    }
+
+    .menu__group {
+        display:flex;
+        padding-left: 2rem;
+        width:70%;
+        justify-content: space-between;
+    }
+    .menu__item {
+        width:50px;
+        font-size:1.8rem;
+        transition: all .4s ease-in-out;
+        cursor: pointer;
+    }
+    .menu__item i:hover {
+        color:#ffd914;
+    }
+
+    .menu__cart {
+        position:relative;
+        left:-28px;
+        top:-18px;
+
+    }
+
+    .menu__cart-circle {
+        background:#ffd914;
+        width:60px;
+        height:60px;
+        font-size:1.7rem;
+        border-radius: 50%;
+        border: 2px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .menu__cart-total {
+        position:absolute;
+        top:0;
+        right: 0;
+        background:red;
+        color:#fff;
+        font-weight: 700;
+        width:20px;
+        height:20px;
+        font-size:.8rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu__cart-circle .fa-cart-shopping {
+        position:relative;
+        font-size:1.4rem;
+    }
+</style>
+<body>
+    <div class="app">
+        <header>
+            <div class="header__left-group">
+                <div class="header__left-user">
+                    <div class="header__left-circle">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+                <div class="header__left-info">
+                    <span class="header__left-greeting">Good Morning,</span>
+                    <span class="header__left-name">Fred Garcia</span>
+                </div>
+            </div>
+            <div class="header__right-group">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+
+        <section class="search-area">
+            <h1>Grubhub</h1>
+            <div class="search-area__input-group">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="search-area__input" type="text" name="search" id="" placeholder="pizza">
+            </div>
+        </section>
+
+        <section class="restaurants">
+            <h3>Restaurants</h3>
+            <div class="res-group">
+                <div class="res-group__item res-group__item--active">
+                    <div class="res-group__item-circle">
+                        <img class="res-group__item-logo" src="https://cdn.mos.cms.futurecdn.net/xDGQ9dbLmMpeEqhiWayMRB.jpg" alt="">
+                    </div>
+                    <span class="res-group__item-title">McDonalds</span>
+                </div>
+                <div class="res-group__item ">
+                    <div class="res-group__item-circle">
+                        <img class="res-group__item-logo" src="https://images.sirved.com/ChIJSz87UDDxCogRVlz6MNFlNzs/NmgcfeC03k.png" alt="">
+                    </div>
+                    <span class="res-group__item-title">KFC</span>
+                </div>
+                <div class="res-group__item ">
+                    <div class="res-group__item-circle">
+                        <img class="res-group__item-logo" src="https://dynl.mktgcdn.com/p/ugVeu_I7n9ph4B3cT6SZ6fyDoG9DxqRIS0jD53oN5w8/800x800.png" alt="">
+                    </div>
+                    <span class="res-group__item-title">Wendy's</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="popular">
+            <h3>Popular Items</h3>
+            <div class="popular-group">
+                <div class="popular-group__item">
+                    <img class="popular-group__item-img" src="https://www.pngarts.com/files/3/KFC-Burger-Transparent-Background-PNG.png" alt="Picture of delicious hamburger">
+                    <span class="popular-group__item-title">Deluxe Burger</span>
+                    <span class="popular-group__item-subtitle">Double Beef</span>
+                    <span class="popular-group__item-price">$5.99</span>
+                </div>
+                <div class="popular-group__item">
+                    <img class="popular-group__item-img" src="https://www.pngmart.com/files/7/Soda-Transparent-Images-PNG.png" alt="Picture of delicious hamburger">
+                    <span class="popular-group__item-title">Deluxe Burger</span>
+                    <span class="popular-group__item-subtitle">Double Beef</span>
+                    <span class="popular-group__item-price">$1.99</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu">
+            <div class="menu__group">
+              <div class="menu__item">
+                <i class="fa-solid fa-house"></i>
+              </div>
+              <div class="menu__item">
+                <i class="fa-solid fa-heart"></i>
+              </div>
+              <div class="menu__item">
+                <i class="fa-solid fa-comment"></i>
+              </div>
+              <div class="menu__item">
+                <i class="fa-solid fa-gear"></i>
+              </div>
+            </div>
+            <div class="menu__cart">
+              <div class="menu__cart-circle">
+                <div class="menu__cart-total">
+                  8
+                </div>
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+      
+            </div>
+          </section>
+
+    </div>
+</body>
+</html>
